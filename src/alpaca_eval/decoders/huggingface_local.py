@@ -7,7 +7,7 @@ import transformers
 from peft import PeftModel
 from torch.utils.data import Dataset
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from .. import constants, utils
 
@@ -92,7 +92,21 @@ def huggingface_local_completions(
         use_fast=is_fast_tokenizer,
         **model_kwargs,
     )
-    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir=cache_dir, **model_kwargs).eval()
+    print(model_kwargs)
+    if model_kwargs.get('load_in_4bit'):
+        bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16
+        )
+    elif model_kwargs.get('load_in_8bit'):
+        bnb_config = BitsAndBytesConfig(
+        load_in_8bit=True,
+        )
+    else:
+        bnb_config = None
+    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir=cache_dir, quantization_config=bnb_config, device_map='auto').bfloat16().eval()
 
     if adapters_name:
         logging.info(f"Merging adapter from {adapters_name}.")
