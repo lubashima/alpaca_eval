@@ -1,0 +1,12 @@
+mixtral:
+  batch_size: 1
+  completion_parser_kwargs:
+    outputs_to_match:
+      1: (?:^|\n) ?Output \(a\)
+      2: (?:^|\n) ?Output \(b\)
+  completions_kwargs:
+    is_fast_tokenizer: true
+    max_new_tokens: 50
+    model_name: mistralai/Mixtral-8x7B-Instruct-v0.1
+  fn_completions: huggingface_local_completions
+  prompt_template: huggingface_models/basic_prompt.txt

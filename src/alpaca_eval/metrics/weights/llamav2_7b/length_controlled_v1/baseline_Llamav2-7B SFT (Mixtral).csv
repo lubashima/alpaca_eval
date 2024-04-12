@@ -1,0 +1,3 @@
+,np.tanh(std_delta_len),instruction_difficulty,not_gamed_baseline.astype(float)
+Mixtral SFT (Llamav2),-0.7385837167299397,0.0777377628308385,0.4396467211593825
+Mixtral-8x7B Instruct,-0.5196403251598883,0.0704974189588870,0.2295132838181315

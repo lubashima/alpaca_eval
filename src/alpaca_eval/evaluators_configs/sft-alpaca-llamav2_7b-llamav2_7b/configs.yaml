@@ -1,0 +1,16 @@
+sft-alpaca-llamav2_7b-llamav2_7b:
+  batch_size: 1
+  completion_parser_kwargs:
+    outputs_to_match:
+      1: (?=.*Output \(a\)).+
+      1.5: (?=.*Tie).+
+      2: (?=.*Output \(b\)).+
+  completions_kwargs:
+    batch_size: 4
+    is_fast_tokenizer: true
+    max_new_tokens: 20
+    model_kwargs:
+      load_in_4bit: true
+    model_name: /home/luisashimabucoro_cohere_com/circularity-llm-evaluation/model_ckpts/llama2_7b-alpaca_llama2_7b/epoch_1/merged_model
+  fn_completions: huggingface_local_completions
+  prompt_template: huggingface_models/basic_prompt.txt

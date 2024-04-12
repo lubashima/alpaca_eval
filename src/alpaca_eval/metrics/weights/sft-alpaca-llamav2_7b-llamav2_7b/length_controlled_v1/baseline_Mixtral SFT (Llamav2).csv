@@ -1,0 +1,2 @@
+,np.tanh(std_delta_len),instruction_difficulty,not_gamed_baseline.astype(float)
+Mixtral-8x7B Instruct,-0.6672939907447244,0.1058890751339812,-0.1571617834481849
