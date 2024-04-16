@@ -17,5 +17,5 @@ Do NOT say both / neither are good.
 # Output (b):
 {output_2}
 
-### Instruction: Which is better, Output (a), Output (b) or is it a Tie? Answer using ONLY "Output (a)", "Output (b)" or "Tie". Do NOT output any other words or symbols.
+### Instruction: Which is better, Output (a), Output (b) or is it a Tie? Answer using ONLY "Output (a)", "Output (b)" or "Tie" based on your preference. Do NOT output any other words or symbols.
 ### Answer: 

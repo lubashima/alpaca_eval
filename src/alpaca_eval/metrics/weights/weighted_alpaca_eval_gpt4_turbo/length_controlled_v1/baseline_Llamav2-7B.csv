@@ -1,0 +1,2 @@
+,np.tanh(std_delta_len),instruction_difficulty,not_gamed_baseline.astype(float)
+Llamav2-7B SFT (Llamav2),-0.8937317228016556,0.0669744463252471,-0.2349076811412837

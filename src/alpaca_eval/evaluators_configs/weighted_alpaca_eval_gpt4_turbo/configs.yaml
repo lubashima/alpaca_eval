@@ -11,6 +11,7 @@ weighted_alpaca_eval_gpt4_turbo:
   completion_parser_kwargs:
     numerator_token: "m"
     denominator_tokens: ["m", "M"]
-    is_binarize: false
+    # is_binarize: false
+    is_binarize: true
   completion_key: "completions_all"
   batch_size: 1

@@ -7,7 +7,8 @@ huggingface_models:
     is_fast_tokenizer: True # needed for local
     batch_size: 4
     model_kwargs:
-      load_in_4bit: True
+      # load_in_4bit: True
+      load_in_8bit: True
   completion_parser_kwargs:
     outputs_to_match:
       # 1: '(?:^|\n) ?Output \(a\)'

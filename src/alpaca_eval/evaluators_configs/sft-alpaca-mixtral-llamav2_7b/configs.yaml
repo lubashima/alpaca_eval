@@ -10,7 +10,7 @@ sft-alpaca-mixtral-llamav2_7b:
     is_fast_tokenizer: true
     max_new_tokens: 20
     model_kwargs:
-      load_in_4bit: true
-    model_name: /home/luisashimabucoro_cohere_com/circularity-llm-evaluation/model_ckpts/mixtral-alpaca_llama2_7b/epoch_1/merged_model
+      load_in_8bit: true
+    model_name: model_ckpts/mixtral-alpaca_llama2_7b/epoch_1/merged_model
   fn_completions: huggingface_local_completions
   prompt_template: huggingface_models/basic_prompt.txt

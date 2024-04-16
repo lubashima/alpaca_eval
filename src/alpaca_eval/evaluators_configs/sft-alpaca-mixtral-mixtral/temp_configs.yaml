@@ -7,13 +7,17 @@ huggingface_models:
     is_fast_tokenizer: True # needed for local
     batch_size: 4
     model_kwargs:
-      load_in_4bit: True
+      # load_in_4bit: True
+      load_in_8bit: True
   completion_parser_kwargs:
     outputs_to_match:
       # 1: '(?:^|\n) ?Output \(a\)'
       # 2: '(?:^|\n) ?Output \(b\)'
       # 1.5: '(?:^|\n) ?Tie'
-      1: '(?=.*Output \(a\)).+'
-      2: '(?=.*Output \(b\)).+'
-      1.5: '(?=.*Tie).+'
+      # 1: '(?=.*Output \(a\)).+'
+      # 2: '(?=.*Output \(b\)).+'
+      # 1.5: '(?=.*Tie).+'
+      1: 'Output \(a\)'
+      2: 'Output \(b\)'
+      1.5: 'Tie'
   batch_size: 1
