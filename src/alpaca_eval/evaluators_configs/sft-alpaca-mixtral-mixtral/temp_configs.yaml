@@ -3,12 +3,12 @@ huggingface_models:
   fn_completions: "huggingface_local_completions" # use "huggingface_local_completions" if you want local serving and "huggingface_api_completions" otherwise
   completions_kwargs:
     model_name: 
-    max_new_tokens: 20
+    max_new_tokens: 10
     is_fast_tokenizer: True # needed for local
     batch_size: 4
     model_kwargs:
       # load_in_4bit: True
-      load_in_8bit: True
+      load_in_4bit: True
   completion_parser_kwargs:
     outputs_to_match:
       # 1: '(?:^|\n) ?Output \(a\)'
@@ -19,5 +19,4 @@ huggingface_models:
       # 1.5: '(?=.*Tie).+'
       1: 'Output \(a\)'
       2: 'Output \(b\)'
-      1.5: 'Tie'
   batch_size: 1

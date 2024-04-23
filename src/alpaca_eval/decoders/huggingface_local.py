@@ -158,6 +158,7 @@ def huggingface_local_completions(
                 prompts_dataset,
                 return_full_text=False,
                 pad_token_id=tokenizer.pad_token_id,
+                repetition_penalty=1.2
             )
         ):
             generated_text = out[0]["generated_text"]

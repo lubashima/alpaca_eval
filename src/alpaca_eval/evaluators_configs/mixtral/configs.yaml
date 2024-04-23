@@ -3,12 +3,11 @@ mixtral:
   completion_parser_kwargs:
     outputs_to_match:
       1: Output \(a\)
-      1.5: Tie
       2: Output \(b\)
   completions_kwargs:
     batch_size: 4
     is_fast_tokenizer: true
-    max_new_tokens: 20
+    max_new_tokens: 10
     model_kwargs:
       load_in_4bit: true
     model_name: mistralai/Mixtral-8x7B-Instruct-v0.1

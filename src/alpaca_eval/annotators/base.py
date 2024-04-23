@@ -99,6 +99,7 @@ class BaseAnnotator(abc.ABC):
         is_raise_if_missing_primary_keys: bool = True,
         annotation_type: Optional[Type] = None,
         is_reapply_parsing: bool = False,
+        test_type=None
     ):
         logging.info(f"Creating the annotator from `{annotators_config}`.")
         self.base_dir = Path(base_dir or self.DEFAULT_BASE_DIR)
@@ -116,6 +117,7 @@ class BaseAnnotator(abc.ABC):
         self.annotators_config = self._initialize_annotators_config(annotators_config)
         self.annotators = self._initialize_annotators()
         self.df_annotations = None
+        self.test_type = test_type
 
         self.other_input_keys_to_keep = self._get_other_input_keys_to_keep(other_input_keys_to_keep)
         self.other_output_keys_to_keep = self._get_other_output_keys_to_keep(other_output_keys_to_keep)
@@ -505,7 +507,7 @@ class BaseAnnotatorJSON(BaseAnnotator):
         if caching_path == "auto":
             if isinstance(self.annotators_config, (str, Path, os.PathLike)):
                 stem = Path(self.annotators_config).stem
-                caching_path = Path(self.annotators_config).parent / f"annotations_seed{self.seed}_{stem}.json"
+                caching_path = Path(self.annotators_config).parent / f"annotations_seed{self.seed}_{stem}_{self.test_type}.json" if self.test_type else Path(self.annotators_config).parent / f"annotations_seed{self.seed}_{stem}.json"
                 logging.info(f"Saving annotations to `{caching_path}`.")
             else:
                 logging.warning("caching_path cannot be 'auto' if annotators_config is not a path. Setting to None.")
